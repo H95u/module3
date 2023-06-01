@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1 style="text-align: center">Category Home</h1>
-<table border="1" style="width: 700px">
+<table border="1" style="width: 700px;margin: auto">
     <tr>
         <th>ID</th>
         <th>Name</th>

@@ -11,35 +11,55 @@
 <head>
     <title>Title</title>
 </head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<style>
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+</style>
 <body>
 <h1 style="text-align: center">Product home</h1>
-<button style="float: right"><a href="/cart">Cart</a></button>
-<table border="1" style="margin: auto;width: 600px">
-    <tr>
-        <td>ID</td>
-        <td>Name</td>
-        <td>Price</td>
-        <td>Quantity</td>
-        <td>Category</td>
-        <td colspan="2" style="text-align: center">Action</td>
-    </tr>
-    <c:forEach var="p" items="${products}">
+<a class="btn btn-primary" href="/cart" style="float: right">Cart</a>
+<div class="container">
+    <table class="table table-bordered border-primary" style="margin: auto;width: 700px">
         <tr>
-            <td>${p.id}</td>
-            <td>${p.name}</td>
-            <td>${p.price}</td>
-            <td>${p.quantity}</td>
-            <td>${p.category.name}</td>
-            <td>
-                <button><a href="/products?action=update&id=${p.id}">Update</a></button>
-                <button onclick=deleteP(${p.id})>Delete</button>
-                <button onclick="addToCart(${p.id},${p.quantity})">Add to cart</button>
-            </td>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>Category</td>
+            <td colspan="2" style="text-align: center">Action</td>
         </tr>
-    </c:forEach>
-</table>
-<button style="margin-left: 500px"><a href="/products?action=create">Add new product</a></button>
-<button style="margin-left: 200px"><a href="/categories">Category home</a></button>
+        <c:forEach var="p" items="${products}">
+            <tr>
+                <td>${p.id}</td>
+                <td>${p.name}</td>
+                <td>${p.price}</td>
+                <td>${p.quantity}</td>
+                <td>${p.category.name}</td>
+                <td>
+                    <button class="btn btn-success"><a href="/products?action=update&id=${p.id}">Update</a></button>
+                    <button class="btn btn-danger" onclick=deleteP(${p.id})>Delete</button>
+                    <button class="btn btn-info" onclick="addToCart(${p.id},${p.quantity})">Add to cart</button>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <a style="float: right" class="btn btn-success" href="/products?action=create">Add new product</a>
+    </div>
+    <div class="col-lg-6">
+        <a class="btn btn-success" href="/categories">Category home</a>
+    </div>
+</div>
 </body>
 <script>
     function deleteP(id) {

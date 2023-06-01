@@ -77,7 +77,7 @@ public class CartServlet extends HttpServlet {
         int productId = Integer.parseInt((request.getParameter("productId")));
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         CartDAO.getInstance().deleteById(id);
-        ProductDAO.getInstance().updateQuantityIncrease(quantity, productId);
+        ProductDAO.getInstance().updateQuantityIncrease(productId, quantity);
         response.sendRedirect("/cart");
     }
 
@@ -108,7 +108,7 @@ public class CartServlet extends HttpServlet {
         } else {
             CartDAO.getInstance().updateCartQuantity(cartId, quantity);
         }
-        ProductDAO.getInstance().updateQuantityDecrease(quantity, id);
+        ProductDAO.getInstance().updateQuantityDecrease(id, quantity);
         response.sendRedirect("/cart");
     }
 
@@ -119,7 +119,7 @@ public class CartServlet extends HttpServlet {
             response.sendRedirect("/cart");
         } else if (quantity > 0) {
             CartDAO.getInstance().updateCartQuantity(id, quantity);
-            ProductDAO.getInstance().updateQuantityDecrease(CartDAO.getInstance().findById(id).getProduct().getId(),quantity);
+            ProductDAO.getInstance().updateQuantityDecrease(CartDAO.getInstance().findById(id).getProduct().getId(), quantity);
             response.sendRedirect("/cart");
         } else {
             CartDAO.getInstance().updateCartQuantity(id, quantity);

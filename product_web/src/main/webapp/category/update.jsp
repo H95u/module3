@@ -17,6 +17,7 @@
     <input type="text" name="name" value="${category.name}">
     <br>
     <button><a type="submit">Update</a></button>
+    <button><a href="/categories">Back to home</a></button>
 </form>
 </body>
 </html>

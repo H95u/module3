@@ -26,6 +26,7 @@
         </c:forEach>
     </select><br>
     <button type="submit">Submit</button>
+    <button><a href="/products">Back to home</a></button>
 </form>
 </body>
 </html>
